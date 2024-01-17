@@ -1,20 +1,15 @@
 A, B = map(int, input().split())
 
-list1 = [i for i in range(10001)]
+list1 = [i for i in range(1, 47)]
 
 temp = 0
 result = 0
 
-while True:
-    i = 1
-    temp += list1[i]
-    if temp >= A:
-        if B <= temp:
-            result += list1[i] * (B - temp + list1[i])
-            break
-        else:
-            result += list1[i] * (A - temp + list1[i])
-            print(result)
+for i in range(list1): # 2/
+    temp += len(list1[i]) # 3/
+    if A > temp - i * 10 ** (len(i)-1) and A <= temp: # 1,3/
+        result += i * (i - (A - (temp - i * 10 ** (len(i)-1))) + 1) # 2
+
 
 print(result)
             
