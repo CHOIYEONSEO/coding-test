@@ -13,5 +13,5 @@ for i in range(list1): # 2/
 
 print(result)
             
-
+# 해결못함.
         
