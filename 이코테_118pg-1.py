@@ -12,25 +12,27 @@ for j in range(row):
 
 dx = [0, 1, 0, -1]
 dy = [-1, 0, 1, 0]
-direction = [0, 1, 2, 3]
 
-count = 0
+count = 1
 
 while True:
-    print(map_list[position[0]][position[1]])
     if map_list[position[0]][position[1]] == 0:
         map_list[position[0]][position[1]] = 1
         count += 1
 
-        for i in range(4):
-            if position[2] == direction[i]:
-                if map_list[position[0]+dx[i]][position[1]+dy[i]] == 0:
-                    position[0] += dx[i]
-                    position[1] += dy[i]
-                    map_list[position[0]][position[1]] = 1
-                    count += 1
+        while True:
+            if map_list[position[0]+dx[position[2]]][position[1]+dy[position[2]]] == 0:
+                position[0] += dx[position[2]]
+                position[1] += dy[position[2]]
+                map_list[position[0]][position[1]] = 1
+                count += 1
 
-                    break
+                break
+
+            if position[2] == 0:
+                position[2] = 3
+            else:
+                position[2] -= 1
     
     else:
         break
