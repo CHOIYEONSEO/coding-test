@@ -17,11 +17,28 @@ direction = [0, 1, 2, 3]
 count = 0
 
 while True:
+    print(map_list[position[0]][position[1]])
     if map_list[position[0]][position[1]] == 0:
         map_list[position[0]][position[1]] = 1
         count += 1
 
         for i in range(4):
             if position[2] == direction[i]:
+                if map_list[position[0]+dx[i]][position[1]+dy[i]] == 0:
+                    position[0] += dx[i]
+                    position[1] += dy[i]
+                    map_list[position[0]][position[1]] = 1
+                    count += 1
+
+                    break
+    
+    else:
+        break
+
+print(count)
                 
+        
+
+
+
 
