@@ -1,12 +1,12 @@
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 
-d = [[0] * m for _ in range(n)]
+d = [[0] * M for _ in range(N)]
 
 x, y, direction = map(int, input().split())
 d[x][y] = 1
 
 array = []
-for i in range(n):
+for i in range(N):
     array.append(list(map(int, input().split())))
 
 dx = [-1, 0, 1, 0]
@@ -32,14 +32,11 @@ while True:
         count += 1
         turn_time = 0
         continue
-
     else:
         turn_time += 1
-
     if turn_time == 4:
         nx = x - dx[direction]
         ny = y - dy[direction]
-
         if array[nx][ny] == 0:
             x = nx
             y = ny
