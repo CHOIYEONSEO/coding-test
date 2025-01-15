@@ -13,4 +13,6 @@ for i in range(N):
 number.sort()
 number.reverse()
 
+#number.sort(reverse = True)
+
 print(' '.join(map(str, number)))
