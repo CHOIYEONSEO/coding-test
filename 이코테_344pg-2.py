@@ -31,7 +31,7 @@ for i in range(n):
 
     for j in range(n):
         if info[i][j] != 0:
-            data.append((info[i][j], 0, i, j))
+            data.append((info[i][j], 0, i, j)) # 바이러스 종류, 시간, 위치 x, 위치 y
 
 data.sort()
 q = deque(data)
