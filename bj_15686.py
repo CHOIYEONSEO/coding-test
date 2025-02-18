@@ -12,9 +12,10 @@ a1, ..., an : 도시 정보 (1 <= 집의 개수 <= 2n, m <= 치킨집 개수 <= 
 
 * 집 위치 (r1, c1)과 치킨집 위치 (r2, c2) 사이의 거리는 |r1-r2| + |c1-c2|
 * 도시 정보 3종류. 0 = 빈칸, 1 = 집, 2 = 치킨집
--> bfs
+-> 구현
 '''
 import sys
+from itertools import combinations
 input = sys.stdin.readline
 INF = int(1e9)
 
@@ -40,25 +41,18 @@ def distance(x, y):
 
     return abs(r1 - r2) + abs(c1 - c2)
 
-def bfs():
-    cost = []
-    
-    for i in range(len(chicken)):
-        min_cost = INF
+total = INF
+
+chi_num = [i for i in range(len(chicken))]
+combi = list(combinations(chi_num, m))
+
+for i in range(len(combi)):
+    cost = [INF for _ in range(len(home))]
+    for k in combi[i]:
         for j in range(len(home)):
-            min_cost = min(min_cost, distance(chicken[i], home[j]))
-        
-        if i >= m:
-            if min_cost < cost[-1]:
-                cost.pop()
-                cost.append(min_cost)
-                cost.sort()
+            cost[j] = min(cost[j], distance(chicken[k], home[j]))
 
-        else:
-            cost.append(min_cost)
-            cost.sort()
+    total = min(total, sum(cost))
 
-    print(cost)
-    return sum(cost)
+print(total)
 
-print(bfs())
